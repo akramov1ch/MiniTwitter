@@ -1,0 +1,2608 @@
+basePath: /
+definitions:
+  api-gateway_protos_comment-proto.Comment:
+    properties:
+      content:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: integer
+      likes:
+        items:
+          type: integer
+        type: array
+      likes_count:
+        type: integer
+      tweet_id:
+        type: integer
+      user_id:
+        type: integer
+    type: object
+  api-gateway_protos_comment-proto.CreateCommentResponse:
+    properties:
+      comment:
+        $ref: '#/definitions/api-gateway_protos_comment-proto.Comment'
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  api-gateway_protos_comment-proto.DeleteCommentResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  api-gateway_protos_comment-proto.GetCommentResponse:
+    properties:
+      comment:
+        $ref: '#/definitions/api-gateway_protos_comment-proto.Comment'
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  api-gateway_protos_comment-proto.GetCommentsByTweetIDResponse:
+    properties:
+      comments:
+        items:
+          $ref: '#/definitions/api-gateway_protos_comment-proto.Comment'
+        type: array
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  api-gateway_protos_comment-proto.LikeCommentResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  api-gateway_protos_comment-proto.RemoveLikeFromCommentResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  api-gateway_protos_direct-proto.CreateDirectMessageResponse:
+    properties:
+      direct_message:
+        $ref: '#/definitions/api-gateway_protos_direct-proto.DirectMessage'
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  api-gateway_protos_direct-proto.DeleteDirectMessageResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  api-gateway_protos_direct-proto.DirectMessage:
+    properties:
+      created_at:
+        type: string
+      id:
+        type: integer
+      media:
+        items:
+          type: string
+        type: array
+      receiver_id:
+        type: integer
+      sender_id:
+        type: integer
+      text:
+        type: string
+      tweet_id:
+        type: integer
+    type: object
+  api-gateway_protos_direct-proto.GetDirectMessageByIDResponse:
+    properties:
+      direct_message:
+        $ref: '#/definitions/api-gateway_protos_direct-proto.DirectMessage'
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  api-gateway_protos_direct-proto.GetDirectMessagesResponse:
+    properties:
+      direct_messages:
+        items:
+          $ref: '#/definitions/api-gateway_protos_direct-proto.DirectMessage'
+        type: array
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  api-gateway_protos_like-proto.CreateLikeCommentResponse:
+    properties:
+      like:
+        $ref: '#/definitions/api-gateway_protos_like-proto.Like'
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  api-gateway_protos_like-proto.CreateLikeTweetResponse:
+    properties:
+      like:
+        $ref: '#/definitions/api-gateway_protos_like-proto.Like'
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  api-gateway_protos_like-proto.DeleteLikeCommentResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  api-gateway_protos_like-proto.DeleteLikeTweetResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  api-gateway_protos_like-proto.GetLikeCommentByUserResponse:
+    properties:
+      likes:
+        items:
+          $ref: '#/definitions/api-gateway_protos_like-proto.Like'
+        type: array
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  api-gateway_protos_like-proto.GetLikeTweetByUserResponse:
+    properties:
+      likes:
+        items:
+          $ref: '#/definitions/api-gateway_protos_like-proto.Like'
+        type: array
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  api-gateway_protos_like-proto.GetLikedTweetResponse:
+    properties:
+      likes:
+        items:
+          $ref: '#/definitions/api-gateway_protos_like-proto.Like'
+        type: array
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  api-gateway_protos_like-proto.GetLikesCommentResponse:
+    properties:
+      likes:
+        items:
+          $ref: '#/definitions/api-gateway_protos_like-proto.Like'
+        type: array
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  api-gateway_protos_like-proto.GetLikesTweetResponse:
+    properties:
+      likes:
+        items:
+          $ref: '#/definitions/api-gateway_protos_like-proto.Like'
+        type: array
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  api-gateway_protos_like-proto.Like:
+    properties:
+      created_at:
+        type: string
+      id:
+        type: integer
+      like_identifier:
+        type: string
+      liked_id:
+        type: integer
+      user_id:
+        type: integer
+    type: object
+  api-gateway_protos_tweet-proto.AddCommentResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  api-gateway_protos_tweet-proto.AddLikeResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  api-gateway_protos_tweet-proto.AddShareResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  api-gateway_protos_tweet-proto.CreateTweetResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  api-gateway_protos_tweet-proto.DeleteTweetResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  api-gateway_protos_tweet-proto.GetLikedTweetsResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+      tweets:
+        items:
+          $ref: '#/definitions/api-gateway_protos_tweet-proto.Tweet'
+        type: array
+    type: object
+  api-gateway_protos_tweet-proto.GetSavedTweetsResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+      tweets:
+        items:
+          $ref: '#/definitions/api-gateway_protos_tweet-proto.Tweet'
+        type: array
+    type: object
+  api-gateway_protos_tweet-proto.GetTweetByIDResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+      tweet:
+        $ref: '#/definitions/api-gateway_protos_tweet-proto.Tweet'
+    type: object
+  api-gateway_protos_tweet-proto.GetTweetsByUserResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+      tweets:
+        items:
+          $ref: '#/definitions/api-gateway_protos_tweet-proto.Tweet'
+        type: array
+    type: object
+  api-gateway_protos_tweet-proto.RemoveCommentResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  api-gateway_protos_tweet-proto.RemoveLikeResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  api-gateway_protos_tweet-proto.RemoveSaveResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  api-gateway_protos_tweet-proto.SaveTweetResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  api-gateway_protos_tweet-proto.Tweet:
+    properties:
+      comment_count:
+        type: integer
+      comments:
+        items:
+          type: integer
+        type: array
+      content:
+        type: string
+      created_at:
+        $ref: '#/definitions/timestamppb.Timestamp'
+      id:
+        type: integer
+      is_liked:
+        type: boolean
+      is_saved:
+        type: boolean
+      like_count:
+        type: integer
+      likes:
+        items:
+          type: integer
+        type: array
+      media:
+        items:
+          type: string
+        type: array
+      media_count:
+        type: integer
+      save_count:
+        type: integer
+      saves:
+        description: only for user created this tweet
+        items:
+          type: integer
+        type: array
+      share_count:
+        type: integer
+      shares:
+        items:
+          type: integer
+        type: array
+      user_id:
+        type: integer
+      username:
+        type: string
+    type: object
+  api-gateway_protos_tweet-proto.UpdateTweetResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  api-gateway_protos_user-proto.AcceptFollowRequestResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  api-gateway_protos_user-proto.AddAvatarResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  api-gateway_protos_user-proto.AddFollowerResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  api-gateway_protos_user-proto.AddFollowingResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  api-gateway_protos_user-proto.AddTweetResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  api-gateway_protos_user-proto.Avatar:
+    properties:
+      id:
+        type: integer
+      url:
+        type: string
+      user_id:
+        type: integer
+    type: object
+  api-gateway_protos_user-proto.BlockUserResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  api-gateway_protos_user-proto.ChangePasswordResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  api-gateway_protos_user-proto.DeleteUserResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  api-gateway_protos_user-proto.ForgotPasswordResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  api-gateway_protos_user-proto.GetAvatarResponse:
+    properties:
+      avatar:
+        $ref: '#/definitions/api-gateway_protos_user-proto.Avatar'
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  api-gateway_protos_user-proto.GetUserByEmailResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+      user:
+        $ref: '#/definitions/api-gateway_protos_user-proto.User'
+    type: object
+  api-gateway_protos_user-proto.GetUserByPhoneResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+      user:
+        $ref: '#/definitions/api-gateway_protos_user-proto.User'
+    type: object
+  api-gateway_protos_user-proto.GetUserByUsernameResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+      user:
+        $ref: '#/definitions/api-gateway_protos_user-proto.User'
+    type: object
+  api-gateway_protos_user-proto.GetUserResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+      user:
+        $ref: '#/definitions/api-gateway_protos_user-proto.User'
+    type: object
+  api-gateway_protos_user-proto.LoginResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+      token:
+        type: string
+      user:
+        $ref: '#/definitions/api-gateway_protos_user-proto.User'
+    type: object
+  api-gateway_protos_user-proto.LogoutResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  api-gateway_protos_user-proto.RegisterResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+      user:
+        $ref: '#/definitions/api-gateway_protos_user-proto.User'
+    type: object
+  api-gateway_protos_user-proto.RejectFollowRequestResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  api-gateway_protos_user-proto.RemoveAvatarResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  api-gateway_protos_user-proto.RemoveFollowerResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  api-gateway_protos_user-proto.RemoveFollowingResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  api-gateway_protos_user-proto.RemoveTweetResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  api-gateway_protos_user-proto.UnblockUserResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  api-gateway_protos_user-proto.UpdateAvatarResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  api-gateway_protos_user-proto.UpdateUserResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+      user:
+        $ref: '#/definitions/api-gateway_protos_user-proto.User'
+    type: object
+  api-gateway_protos_user-proto.User:
+    properties:
+      avatar_url:
+        type: string
+      bio:
+        type: string
+      blocked_users:
+        items:
+          type: integer
+        type: array
+      created_at:
+        $ref: '#/definitions/timestamppb.Timestamp'
+      email:
+        type: string
+      follower_count:
+        type: integer
+      followers:
+        items:
+          type: integer
+        type: array
+      following:
+        items:
+          type: integer
+        type: array
+      following_count:
+        type: integer
+      id:
+        type: integer
+      is_private:
+        type: boolean
+      name:
+        type: string
+      password:
+        type: string
+      phone:
+        type: string
+      tweet_count:
+        type: integer
+      tweets:
+        items:
+          type: integer
+        type: array
+      username:
+        type: string
+    type: object
+  api-gateway_protos_user-proto.VerifyCodeResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  internal_handlers_comment-handlers.ErrorResponse:
+    properties:
+      error:
+        type: string
+    type: object
+  internal_handlers_direct-handlers.ErrorResponse:
+    properties:
+      error:
+        type: string
+    type: object
+  internal_handlers_like-handlers.ErrorResponse:
+    properties:
+      error:
+        type: string
+    type: object
+  internal_handlers_tweet-handlers.ErrorResponse:
+    properties:
+      error:
+        type: string
+    type: object
+  internal_handlers_user-handlers.ErrorResponse:
+    properties:
+      error:
+        type: string
+    type: object
+  timestamppb.Timestamp:
+    properties:
+      nanos:
+        description: |-
+          Non-negative fractions of a second at nanosecond resolution. Negative
+          second values with fractions must still have non-negative nanos values
+          that count forward in time. Must be from 0 to 999,999,999
+          inclusive.
+        type: integer
+      seconds:
+        description: |-
+          Represents seconds of UTC time since Unix epoch
+          1970-01-01T00:00:00Z. Must be from 0001-01-01T00:00:00Z to
+          9999-12-31T23:59:59Z inclusive.
+        type: integer
+    type: object
+host: localhost:5050
+info:
+  contact: {}
+  description: API for managing users, tweets, comments, likes, and direct messages.
+  title: API Gateway
+  version: "1.0"
+paths:
+  /comments/{comment_id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a comment by ID
+      parameters:
+      - description: Comment ID
+        in: path
+        name: comment_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_comment-proto.DeleteCommentResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_comment-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_comment-handlers.ErrorResponse'
+      summary: Delete a comment
+      tags:
+      - comments
+  /comments/{comment_id}/{user_id}:
+    get:
+      consumes:
+      - application/json
+      description: Get a comment by ID
+      parameters:
+      - description: Comment ID
+        in: path
+        name: comment_id
+        required: true
+        type: integer
+      - description: User ID
+        in: path
+        name: user_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_comment-proto.GetCommentResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_comment-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_comment-handlers.ErrorResponse'
+      summary: Get a comment
+      tags:
+      - comments
+  /comments/{tweet_id}/{user_id}:
+    post:
+      consumes:
+      - application/json
+      description: Create a new comment for a tweet
+      parameters:
+      - description: User ID
+        in: path
+        name: user_id
+        required: true
+        type: integer
+      - description: Tweet ID
+        in: path
+        name: tweet_id
+        required: true
+        type: integer
+      - description: Comment content
+        in: formData
+        name: content
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_comment-proto.CreateCommentResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_comment-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_comment-handlers.ErrorResponse'
+      summary: Create a comment
+      tags:
+      - comments
+  /comments/like/{comment_id}:
+    post:
+      consumes:
+      - application/json
+      description: Like a specific comment
+      parameters:
+      - description: Comment ID
+        in: path
+        name: comment_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_comment-proto.LikeCommentResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_comment-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_comment-handlers.ErrorResponse'
+      summary: Like a comment
+      tags:
+      - comments
+  /comments/tweet/{tweet_id}:
+    get:
+      consumes:
+      - application/json
+      description: Get all comments for a specific tweet
+      parameters:
+      - description: Tweet ID
+        in: path
+        name: tweet_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_comment-proto.GetCommentsByTweetIDResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_comment-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_comment-handlers.ErrorResponse'
+      summary: Get comments by tweet ID
+      tags:
+      - comments
+  /comments/unlike/{comment_id}:
+    post:
+      consumes:
+      - application/json
+      description: Remove like from a specific comment
+      parameters:
+      - description: Comment ID
+        in: path
+        name: comment_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_comment-proto.RemoveLikeFromCommentResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_comment-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_comment-handlers.ErrorResponse'
+      summary: Remove like from a comment
+      tags:
+      - comments
+  /directs/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a specific direct message by ID
+      parameters:
+      - description: Direct Message ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_direct-proto.DeleteDirectMessageResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_direct-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_direct-handlers.ErrorResponse'
+      summary: Delete a direct message
+      tags:
+      - direct_messages
+    get:
+      consumes:
+      - application/json
+      description: Get a specific direct message by ID
+      parameters:
+      - description: Direct Message ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_direct-proto.GetDirectMessageByIDResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_direct-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_direct-handlers.ErrorResponse'
+      summary: Get a direct message by ID
+      tags:
+      - direct_messages
+  /directs/{sender_id}/{receiver_id}:
+    get:
+      consumes:
+      - application/json
+      description: Get all direct messages between two users
+      parameters:
+      - description: Sender ID
+        in: path
+        name: sender_id
+        required: true
+        type: integer
+      - description: Receiver ID
+        in: path
+        name: receiver_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_direct-proto.GetDirectMessagesResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_direct-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_direct-handlers.ErrorResponse'
+      summary: Get direct messages
+      tags:
+      - direct_messages
+    post:
+      consumes:
+      - application/json
+      description: Create a new direct message between users
+      parameters:
+      - description: Sender ID
+        in: path
+        name: sender_id
+        required: true
+        type: integer
+      - description: Receiver ID
+        in: path
+        name: receiver_id
+        required: true
+        type: integer
+      - description: Message text
+        in: formData
+        name: text
+        required: true
+        type: string
+      - description: Media files
+        in: formData
+        name: media
+        type: file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_direct-proto.CreateDirectMessageResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_direct-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_direct-handlers.ErrorResponse'
+      summary: Create a direct message
+      tags:
+      - direct_messages
+  /likes/comment/{comment_id}:
+    get:
+      consumes:
+      - application/json
+      description: Get all likes for a specific comment
+      parameters:
+      - description: Comment ID
+        in: path
+        name: comment_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_like-proto.GetLikesCommentResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_like-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_like-handlers.ErrorResponse'
+      summary: Get likes for a comment
+      tags:
+      - likes
+  /likes/comment/{comment_id}/{user_id}:
+    delete:
+      consumes:
+      - application/json
+      description: Remove like from a specific comment by user
+      parameters:
+      - description: User ID
+        in: path
+        name: user_id
+        required: true
+        type: integer
+      - description: Comment ID
+        in: path
+        name: comment_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_like-proto.DeleteLikeCommentResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_like-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_like-handlers.ErrorResponse'
+      summary: Unlike a comment
+      tags:
+      - likes
+    post:
+      consumes:
+      - application/json
+      description: Like a specific comment by user
+      parameters:
+      - description: User ID
+        in: path
+        name: user_id
+        required: true
+        type: integer
+      - description: Comment ID
+        in: path
+        name: comment_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_like-proto.CreateLikeCommentResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_like-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_like-handlers.ErrorResponse'
+      summary: Like a comment
+      tags:
+      - likes
+  /likes/comment/user/{user_id}:
+    get:
+      consumes:
+      - application/json
+      description: Get all likes for a specific comment by a user
+      parameters:
+      - description: User ID
+        in: path
+        name: user_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_like-proto.GetLikeCommentByUserResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_like-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_like-handlers.ErrorResponse'
+      summary: Get likes for a comment by user
+      tags:
+      - likes
+  /likes/tweet/{tweet_id}/{user_id_to_get}:
+    get:
+      consumes:
+      - application/json
+      description: Get all likes for a specific tweet
+      parameters:
+      - description: Tweet ID
+        in: path
+        name: tweet_id
+        required: true
+        type: integer
+      - description: User ID to get likes
+        in: path
+        name: user_id_to_get
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_like-proto.GetLikesTweetResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_like-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_like-handlers.ErrorResponse'
+      summary: Get likes for a tweet
+      tags:
+      - likes
+  /likes/tweet/{tweet_id}/{user_id}:
+    delete:
+      consumes:
+      - application/json
+      description: Remove like from a specific tweet by user
+      parameters:
+      - description: User ID
+        in: path
+        name: user_id
+        required: true
+        type: integer
+      - description: Tweet ID
+        in: path
+        name: tweet_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_like-proto.DeleteLikeTweetResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_like-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_like-handlers.ErrorResponse'
+      summary: Unlike a tweet
+      tags:
+      - likes
+    post:
+      consumes:
+      - application/json
+      description: Like a specific tweet by user
+      parameters:
+      - description: User ID
+        in: path
+        name: user_id
+        required: true
+        type: integer
+      - description: Tweet ID
+        in: path
+        name: tweet_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_like-proto.CreateLikeTweetResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_like-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_like-handlers.ErrorResponse'
+      summary: Like a tweet
+      tags:
+      - likes
+  /likes/tweet/{tweet_id}/{user_id}/{like_identifier}:
+    get:
+      consumes:
+      - application/json
+      description: Get a specific liked tweet by user
+      parameters:
+      - description: User ID
+        in: path
+        name: user_id
+        required: true
+        type: integer
+      - description: Tweet ID
+        in: path
+        name: tweet_id
+        required: true
+        type: integer
+      - description: Like Identifier
+        in: path
+        name: like_identifier
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_like-proto.GetLikedTweetResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_like-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_like-handlers.ErrorResponse'
+      summary: Get a liked tweet
+      tags:
+      - likes
+  /likes/user/{user_id}:
+    get:
+      consumes:
+      - application/json
+      description: Get all tweets liked by a specific user
+      parameters:
+      - description: User ID
+        in: path
+        name: user_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_like-proto.GetLikeTweetByUserResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_like-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_like-handlers.ErrorResponse'
+      summary: Get liked tweets by user
+      tags:
+      - likes
+  /tweets/{tweet_id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a specific tweet by ID
+      parameters:
+      - description: Tweet ID
+        in: path
+        name: tweet_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_tweet-proto.DeleteTweetResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_tweet-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_tweet-handlers.ErrorResponse'
+      summary: Delete a tweet
+      tags:
+      - tweets
+    get:
+      consumes:
+      - application/json
+      description: Get a specific tweet by ID
+      parameters:
+      - description: Tweet ID
+        in: path
+        name: tweet_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_tweet-proto.GetTweetByIDResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_tweet-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_tweet-handlers.ErrorResponse'
+      summary: Get a tweet by ID
+      tags:
+      - tweets
+    put:
+      consumes:
+      - application/json
+      description: Update an existing tweet
+      parameters:
+      - description: Tweet ID
+        in: path
+        name: tweet_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_tweet-proto.UpdateTweetResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_tweet-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_tweet-handlers.ErrorResponse'
+      summary: Update a tweet
+      tags:
+      - tweets
+  /tweets/{user_id}:
+    post:
+      consumes:
+      - application/json
+      description: Create a new tweet for a user
+      parameters:
+      - description: User ID
+        in: path
+        name: user_id
+        required: true
+        type: integer
+      - description: Tweet content
+        in: formData
+        name: content
+        required: true
+        type: string
+      - description: Media files
+        in: formData
+        name: media
+        type: file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_tweet-proto.CreateTweetResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_tweet-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_tweet-handlers.ErrorResponse'
+      summary: Create a tweet
+      tags:
+      - tweets
+  /tweets/comment/{tweet_id}/{comment_id}:
+    delete:
+      consumes:
+      - application/json
+      description: Remove a specific comment from a tweet
+      parameters:
+      - description: Tweet ID
+        in: path
+        name: tweet_id
+        required: true
+        type: integer
+      - description: Comment ID
+        in: path
+        name: comment_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_tweet-proto.RemoveCommentResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_tweet-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_tweet-handlers.ErrorResponse'
+      summary: Remove a comment from a tweet
+      tags:
+      - tweets
+  /tweets/comment/{tweet_id}/{user_id}:
+    post:
+      consumes:
+      - application/json
+      description: Add a comment to a specific tweet
+      parameters:
+      - description: Tweet ID
+        in: path
+        name: tweet_id
+        required: true
+        type: integer
+      - description: User ID
+        in: path
+        name: user_id
+        required: true
+        type: integer
+      - description: Comment content
+        in: formData
+        name: content
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_tweet-proto.AddCommentResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_tweet-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_tweet-handlers.ErrorResponse'
+      summary: Add a comment to a tweet
+      tags:
+      - tweets
+  /tweets/like/{tweet_id}/{user_id}:
+    post:
+      consumes:
+      - application/json
+      description: Add a like to a specific tweet
+      parameters:
+      - description: Tweet ID
+        in: path
+        name: tweet_id
+        required: true
+        type: integer
+      - description: User ID
+        in: path
+        name: user_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_tweet-proto.AddLikeResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_tweet-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_tweet-handlers.ErrorResponse'
+      summary: Like a tweet
+      tags:
+      - tweets
+  /tweets/liked/{user_id}:
+    get:
+      consumes:
+      - application/json
+      description: Get all tweets liked by a user
+      parameters:
+      - description: User ID
+        in: path
+        name: user_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_tweet-proto.GetLikedTweetsResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_tweet-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_tweet-handlers.ErrorResponse'
+      summary: Get liked tweets
+      tags:
+      - tweets
+  /tweets/remove-save/{tweet_id}/{user_id}:
+    delete:
+      consumes:
+      - application/json
+      description: Remove a specific tweet from saved tweets
+      parameters:
+      - description: Tweet ID
+        in: path
+        name: tweet_id
+        required: true
+        type: integer
+      - description: User ID
+        in: path
+        name: user_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_tweet-proto.RemoveSaveResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_tweet-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_tweet-handlers.ErrorResponse'
+      summary: Remove saved tweet
+      tags:
+      - tweets
+  /tweets/save/{tweet_id}/{user_id}:
+    post:
+      consumes:
+      - application/json
+      description: Save a specific tweet for later
+      parameters:
+      - description: Tweet ID
+        in: path
+        name: tweet_id
+        required: true
+        type: integer
+      - description: User ID
+        in: path
+        name: user_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_tweet-proto.SaveTweetResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_tweet-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_tweet-handlers.ErrorResponse'
+      summary: Save a tweet
+      tags:
+      - tweets
+  /tweets/saved/{user_id}:
+    get:
+      consumes:
+      - application/json
+      description: Get all saved tweets for a user
+      parameters:
+      - description: User ID
+        in: path
+        name: user_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_tweet-proto.GetSavedTweetsResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_tweet-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_tweet-handlers.ErrorResponse'
+      summary: Get saved tweets
+      tags:
+      - tweets
+  /tweets/share/{tweet_id}/{user_id}:
+    post:
+      consumes:
+      - application/json
+      description: Share a specific tweet
+      parameters:
+      - description: Tweet ID
+        in: path
+        name: tweet_id
+        required: true
+        type: integer
+      - description: User ID
+        in: path
+        name: user_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_tweet-proto.AddShareResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_tweet-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_tweet-handlers.ErrorResponse'
+      summary: Share a tweet
+      tags:
+      - tweets
+  /tweets/unlike/{tweet_id}/{user_id}:
+    delete:
+      consumes:
+      - application/json
+      description: Remove a like from a specific tweet
+      parameters:
+      - description: Tweet ID
+        in: path
+        name: tweet_id
+        required: true
+        type: integer
+      - description: User ID
+        in: path
+        name: user_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_tweet-proto.RemoveLikeResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_tweet-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_tweet-handlers.ErrorResponse'
+      summary: Unlike a tweet
+      tags:
+      - tweets
+  /tweets/user/{user_id}:
+    get:
+      consumes:
+      - application/json
+      description: Get all tweets for a specific user
+      parameters:
+      - description: User ID
+        in: path
+        name: user_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_tweet-proto.GetTweetsByUserResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_tweet-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_tweet-handlers.ErrorResponse'
+      summary: Get tweets by user
+      tags:
+      - tweets
+  /users/accept-follow:
+    post:
+      consumes:
+      - application/json
+      description: Accept a specific follow request
+      parameters:
+      - description: User ID
+        in: formData
+        name: user_id
+        required: true
+        type: integer
+      - description: Follower ID
+        in: formData
+        name: follower_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_user-proto.AcceptFollowRequestResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_user-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_user-handlers.ErrorResponse'
+      summary: Accept a follow request
+      tags:
+      - users
+  /users/add-avatar:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Add an avatar for a specific user
+      parameters:
+      - description: User ID
+        in: formData
+        name: user_id
+        required: true
+        type: integer
+      - description: Avatar File
+        in: formData
+        name: avatar
+        required: true
+        type: file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_user-proto.AddAvatarResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_user-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_user-handlers.ErrorResponse'
+      summary: Add avatar to user
+      tags:
+      - users
+  /users/add-follower:
+    post:
+      consumes:
+      - application/json
+      description: Add a specific follower to a user
+      parameters:
+      - description: User ID
+        in: formData
+        name: user_id
+        required: true
+        type: integer
+      - description: Follower ID
+        in: formData
+        name: follower_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_user-proto.AddFollowerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_user-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_user-handlers.ErrorResponse'
+      summary: Add a follower to user
+      tags:
+      - users
+  /users/add-following:
+    post:
+      consumes:
+      - application/json
+      description: Add a specific following to a user
+      parameters:
+      - description: User ID
+        in: formData
+        name: user_id
+        required: true
+        type: integer
+      - description: Following ID
+        in: formData
+        name: following_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_user-proto.AddFollowingResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_user-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_user-handlers.ErrorResponse'
+      summary: Add a following to user
+      tags:
+      - users
+  /users/add-tweet:
+    post:
+      consumes:
+      - application/json
+      description: Add a specific tweet to a user
+      parameters:
+      - description: User ID
+        in: formData
+        name: user_id
+        required: true
+        type: integer
+      - description: Tweet ID
+        in: formData
+        name: tweet_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_user-proto.AddTweetResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_user-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_user-handlers.ErrorResponse'
+      summary: Add a tweet to user
+      tags:
+      - users
+  /users/block:
+    post:
+      consumes:
+      - application/json
+      description: Block a specific user
+      parameters:
+      - description: User ID
+        in: formData
+        name: user_id
+        required: true
+        type: integer
+      - description: Blocked User ID
+        in: formData
+        name: blocked_user_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_user-proto.BlockUserResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_user-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_user-handlers.ErrorResponse'
+      summary: Block a user
+      tags:
+      - users
+  /users/change-password:
+    post:
+      consumes:
+      - application/json
+      description: Change the password for a specific user
+      parameters:
+      - description: User ID
+        in: formData
+        name: user_id
+        required: true
+        type: integer
+      - description: Old Password
+        in: formData
+        name: old_password
+        required: true
+        type: string
+      - description: New Password
+        in: formData
+        name: new_password
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_user-proto.ChangePasswordResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_user-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_user-handlers.ErrorResponse'
+      summary: Change user password
+      tags:
+      - users
+  /users/delete:
+    post:
+      consumes:
+      - application/json
+      description: Delete a specific user by ID
+      parameters:
+      - description: User ID
+        in: formData
+        name: user_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_user-proto.DeleteUserResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_user-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_user-handlers.ErrorResponse'
+      summary: Delete a user
+      tags:
+      - users
+  /users/delete-avatar:
+    post:
+      consumes:
+      - application/json
+      description: Delete the avatar for a specific user
+      parameters:
+      - description: User ID
+        in: formData
+        name: user_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_user-proto.RemoveAvatarResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_user-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_user-handlers.ErrorResponse'
+      summary: Delete user avatar
+      tags:
+      - users
+  /users/email:
+    post:
+      consumes:
+      - application/json
+      description: Get user details by email
+      parameters:
+      - description: Email
+        in: formData
+        name: email
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_user-proto.GetUserByEmailResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_user-handlers.ErrorResponse'
+      summary: Get user by email
+      tags:
+      - users
+  /users/forgot-password:
+    post:
+      consumes:
+      - application/json
+      description: Reset the password for a user
+      parameters:
+      - description: Login Identifier
+        in: formData
+        name: login_identifier
+        required: true
+        type: string
+      - description: New Password
+        in: formData
+        name: new_password
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_user-proto.ForgotPasswordResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_user-handlers.ErrorResponse'
+      summary: Forgot password
+      tags:
+      - users
+  /users/get:
+    post:
+      consumes:
+      - application/json
+      description: Get details of a specific user
+      parameters:
+      - description: User ID
+        in: formData
+        name: user_id
+        required: true
+        type: integer
+      - description: User ID to get
+        in: formData
+        name: user_id_to_get
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_user-proto.GetUserResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_user-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_user-handlers.ErrorResponse'
+      summary: Get user details
+      tags:
+      - users
+  /users/get-avatar:
+    post:
+      consumes:
+      - application/json
+      description: Retrieve the avatar for a specific user
+      parameters:
+      - description: User ID
+        in: formData
+        name: user_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_user-proto.GetAvatarResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_user-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_user-handlers.ErrorResponse'
+      summary: Get user avatar
+      tags:
+      - users
+  /users/login:
+    post:
+      consumes:
+      - application/json
+      description: Login a user with their credentials
+      parameters:
+      - description: Login Identifier
+        in: formData
+        name: login_identifier
+        required: true
+        type: string
+      - description: Password
+        in: formData
+        name: password
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_user-proto.LoginResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_user-handlers.ErrorResponse'
+      summary: User login
+      tags:
+      - users
+  /users/logout:
+    post:
+      consumes:
+      - application/json
+      description: Logout a user by ID
+      parameters:
+      - description: User ID
+        in: formData
+        name: user_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_user-proto.LogoutResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_user-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_user-handlers.ErrorResponse'
+      summary: User logout
+      tags:
+      - users
+  /users/phone:
+    post:
+      consumes:
+      - application/json
+      description: Get user details by phone number
+      parameters:
+      - description: Phone Number
+        in: formData
+        name: phone
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_user-proto.GetUserByPhoneResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_user-handlers.ErrorResponse'
+      summary: Get user by phone number
+      tags:
+      - users
+  /users/register:
+    post:
+      consumes:
+      - application/json
+      description: Register a new user with username, email, and password
+      parameters:
+      - description: Username
+        in: formData
+        name: username
+        required: true
+        type: string
+      - description: Email
+        in: formData
+        name: email
+        required: true
+        type: string
+      - description: Password
+        in: formData
+        name: password
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_user-proto.RegisterResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_user-handlers.ErrorResponse'
+      summary: Register a new user
+      tags:
+      - users
+  /users/reject-follow:
+    post:
+      consumes:
+      - application/json
+      description: Reject a specific follow request
+      parameters:
+      - description: User ID
+        in: formData
+        name: user_id
+        required: true
+        type: integer
+      - description: Follower ID
+        in: formData
+        name: follower_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_user-proto.RejectFollowRequestResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_user-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_user-handlers.ErrorResponse'
+      summary: Reject a follow request
+      tags:
+      - users
+  /users/remove-follower:
+    post:
+      consumes:
+      - application/json
+      description: Remove a specific follower from a user
+      parameters:
+      - description: User ID
+        in: formData
+        name: user_id
+        required: true
+        type: integer
+      - description: Follower ID
+        in: formData
+        name: follower_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_user-proto.RemoveFollowerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_user-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_user-handlers.ErrorResponse'
+      summary: Remove a follower from user
+      tags:
+      - users
+  /users/remove-following:
+    post:
+      consumes:
+      - application/json
+      description: Remove a specific following from a user
+      parameters:
+      - description: User ID
+        in: formData
+        name: user_id
+        required: true
+        type: integer
+      - description: Following ID
+        in: formData
+        name: following_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_user-proto.RemoveFollowingResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_user-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_user-handlers.ErrorResponse'
+      summary: Remove a following from user
+      tags:
+      - users
+  /users/remove-tweet:
+    post:
+      consumes:
+      - application/json
+      description: Remove a specific tweet from a user
+      parameters:
+      - description: User ID
+        in: formData
+        name: user_id
+        required: true
+        type: integer
+      - description: Tweet ID
+        in: formData
+        name: tweet_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_user-proto.RemoveTweetResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_user-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_user-handlers.ErrorResponse'
+      summary: Remove a tweet from user
+      tags:
+      - users
+  /users/unblock:
+    post:
+      consumes:
+      - application/json
+      description: Unblock a specific user
+      parameters:
+      - description: User ID
+        in: formData
+        name: user_id
+        required: true
+        type: integer
+      - description: Blocked User ID
+        in: formData
+        name: blocked_user_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_user-proto.UnblockUserResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_user-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_user-handlers.ErrorResponse'
+      summary: Unblock a user
+      tags:
+      - users
+  /users/update:
+    post:
+      consumes:
+      - application/json
+      description: Update user information
+      parameters:
+      - description: User ID
+        in: formData
+        name: user_id
+        required: true
+        type: integer
+      - description: Username
+        in: formData
+        name: username
+        type: string
+      - description: Email
+        in: formData
+        name: email
+        type: string
+      - description: Phone
+        in: formData
+        name: phone
+        type: string
+      - description: Bio
+        in: formData
+        name: bio
+        type: string
+      - description: Name
+        in: formData
+        name: name
+        type: string
+      - description: Is Private
+        in: formData
+        name: is_private
+        type: boolean
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_user-proto.UpdateUserResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_user-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_user-handlers.ErrorResponse'
+      summary: Update user details
+      tags:
+      - users
+  /users/update-avatar:
+    post:
+      consumes:
+      - application/json
+      description: Update the avatar for a specific user
+      parameters:
+      - description: User ID
+        in: formData
+        name: user_id
+        required: true
+        type: integer
+      - description: New Avatar File
+        in: formData
+        name: avatar
+        required: true
+        type: file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_user-proto.UpdateAvatarResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_handlers_user-handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_user-handlers.ErrorResponse'
+      summary: Update user avatar
+      tags:
+      - users
+  /users/username:
+    post:
+      consumes:
+      - application/json
+      description: Get user details by username
+      parameters:
+      - description: Username
+        in: formData
+        name: username
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_user-proto.GetUserByUsernameResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_user-handlers.ErrorResponse'
+      summary: Get user by username
+      tags:
+      - users
+  /users/verify:
+    post:
+      consumes:
+      - application/json
+      description: Verify the code sent to the user
+      parameters:
+      - description: Login Identifier
+        in: formData
+        name: login_identifier
+        required: true
+        type: string
+      - description: Verification Code
+        in: formData
+        name: code
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api-gateway_protos_user-proto.VerifyCodeResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_handlers_user-handlers.ErrorResponse'
+      summary: Verify code
+      tags:
+      - users
+swagger: "2.0"

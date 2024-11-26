@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+option go_package = "protos/direct-proto";
+
+message DirectMessage {
+    int64 id = 1;
+    int64 sender_id = 2;
+    int64 receiver_id = 3;
+    int64 tweet_id = 4;
+    string text = 5;
+    repeated string media = 6;
+    string created_at = 7;
+}
+
+service DirectService {
+    rpc CreateDirectMessage(CreateDirectMessageRequest) returns (CreateDirectMessageResponse) {}
+    rpc GetDirectMessages(GetDirectMessagesRequest) returns (GetDirectMessagesResponse) {}
+    rpc DeleteDirectMessage(DeleteDirectMessageRequest) returns (DeleteDirectMessageResponse) {}
+    rpc GetDirectMessageByID(GetDirectMessageByIDRequest) returns (GetDirectMessageByIDResponse) {}
+}
+
+message GetDirectMessageByIDRequest {
+    int64 id = 1;
+}
+
+message GetDirectMessageByIDResponse {
+    bool success = 1;
+    string message = 2;
+    DirectMessage direct_message = 3;
+}
+
+message CreateDirectMessageRequest {
+    int64 sender_id = 1;
+    int64 receiver_id = 2;
+    int64 tweet_id = 3;
+    string text = 4;
+    repeated string media = 5;
+}
+
+message CreateDirectMessageResponse {
+    bool success = 1;  
+    string message = 2;
+    DirectMessage direct_message = 3;
+}
+
+message GetDirectMessagesRequest {
+    int64 sender_id = 1;
+    int64 receiver_id = 2;
+}
+
+message GetDirectMessagesResponse {
+    bool success = 1;
+    string message = 2;
+    repeated DirectMessage direct_messages = 3;
+}
+
+message DeleteDirectMessageRequest {
+    int64 id = 1;
+}
+
+message DeleteDirectMessageResponse {
+    bool success = 1;
+    string message = 2;
+}

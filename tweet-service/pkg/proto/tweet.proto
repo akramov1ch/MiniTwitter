@@ -1,0 +1,190 @@
+syntax = "proto3";
+
+option go_package = "pkg/proto/";
+
+import "google/protobuf/timestamp.proto";
+
+message Tweet {
+    int32 id = 1;
+    string content = 2;
+    int32 user_id = 3;
+    string username = 4;
+    google.protobuf.Timestamp created_at = 5;
+    repeated string media = 6;
+    repeated int32 likes = 7;
+    repeated int32 comments = 8;
+    repeated int32 shares = 9;
+    repeated int32 saves = 10; // only for user created this tweet
+    int32 media_count = 11;
+    int32 like_count = 12;
+    int32 comment_count = 13;
+    int32 share_count = 14;
+    int32 save_count = 15;
+    bool is_saved = 16;
+    bool is_liked = 17;
+}
+
+service TweetService {
+    rpc CreateTweet(CreateTweetRequest) returns (CreateTweetResponse) {}
+    rpc GetTweetsByUser(GetTweetsByUserRequest) returns (GetTweetsByUserResponse) {}
+    rpc UpdateTweet(UpdateTweetRequest) returns (UpdateTweetResponse) {}
+    rpc DeleteTweet(DeleteTweetRequest) returns (DeleteTweetResponse) {}
+    rpc AddLike(AddLikeRequest) returns (AddLikeResponse) {}
+    rpc RemoveLike(RemoveLikeRequest) returns (RemoveLikeResponse) {}
+    rpc AddComment(AddCommentRequest) returns (AddCommentResponse) {}
+    rpc RemoveComment(RemoveCommentRequest) returns (RemoveCommentResponse) {}
+    rpc AddShare(AddShareRequest) returns (AddShareResponse) {}
+    rpc SaveTweet(SaveTweetRequest) returns (SaveTweetResponse) {}
+    rpc RemoveSave(RemoveSaveRequest) returns (RemoveSaveResponse) {}
+    rpc GetTweetByID(GetTweetByIDRequest) returns (GetTweetByIDResponse) {}
+    rpc GetSavedTweets(GetSavedTweetsRequest) returns (GetSavedTweetsResponse) {}
+    rpc GetLikedTweets(GetLikedTweetsRequest) returns (GetLikedTweetsResponse) {}
+}
+
+message GetSavedTweetsRequest {
+    int32 user_id = 1;
+}
+
+message GetSavedTweetsResponse {
+    repeated Tweet tweets = 1;
+    bool success = 2;
+    string message = 3;
+}
+
+message GetLikedTweetsRequest {
+    int32 user_id = 1;
+}
+
+message GetLikedTweetsResponse {
+    repeated Tweet tweets = 1;
+    bool success = 2;
+    string message = 3;
+}
+
+message CreateTweetRequest {
+    string content = 1;
+    int32 user_id = 2;
+    repeated string media = 3;
+    string username = 4;
+}
+
+message CreateTweetResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message GetTweetsByUserRequest {
+    int32 user_id = 1;
+    int32 user_id_to_get = 2;
+}
+
+message GetTweetsByUserResponse {
+    repeated Tweet tweets = 1;
+    bool success = 2;
+    string message = 3;
+}
+
+
+message UpdateTweetRequest {
+    int32 tweet_id = 1;
+    string content = 2;
+}
+
+message UpdateTweetResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message AddLikeRequest {
+    int32 tweet_id = 1;
+    int32 user_id = 2;
+}
+
+message AddLikeResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message RemoveLikeRequest {
+    int32 tweet_id = 1;
+    int32 user_id = 2;
+}
+
+message RemoveLikeResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message AddCommentRequest {
+    int32 tweet_id = 1;
+    int32 user_id = 2;
+    int32 comment_id = 3;
+}
+
+message AddCommentResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message RemoveCommentRequest {
+    int32 tweet_id = 1;
+    int32 user_id = 2;
+    int32 comment_id = 3;
+}
+
+message RemoveCommentResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message AddShareRequest {
+    int32 tweet_id = 1;
+    int32 user_id = 2;
+}
+
+message AddShareResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+
+message SaveTweetRequest {
+    int32 tweet_id = 1;
+    int32 user_id = 2;
+}
+
+message SaveTweetResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message RemoveSaveRequest {
+    int32 tweet_id = 1;
+    int32 user_id = 2;
+}
+
+message RemoveSaveResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message DeleteTweetRequest {
+    int32 tweet_id = 1;
+    int32 user_id = 2;
+}
+
+message DeleteTweetResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message GetTweetByIDRequest {
+    int32 tweet_id = 1;
+    int32 user_id_to_get = 2;
+}
+
+message GetTweetByIDResponse {
+    Tweet tweet = 1;
+    bool success = 2;
+    string message = 3;
+}

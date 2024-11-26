@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS codes (
+    id SERIAL PRIMARY KEY,
+    login_identifier VARCHAR(255) NOT NULL,
+    code VARCHAR(6) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

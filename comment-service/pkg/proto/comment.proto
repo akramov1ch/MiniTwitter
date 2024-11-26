@@ -1,0 +1,86 @@
+syntax = "proto3";
+
+option go_package = "pkg/proto/";
+
+message Comment {
+    int64 id = 1;
+    int64 user_id = 2;
+    int64 tweet_id = 3;
+    string content = 4;
+    string created_at = 5;
+    repeated int64 likes = 6;
+    int32 likes_count = 7;
+}
+
+service CommentService {
+    rpc CreateComment(CreateCommentRequest) returns (CreateCommentResponse) {}
+    rpc GetComment(GetCommentRequest) returns (GetCommentResponse) {}
+    rpc DeleteComment(DeleteCommentRequest) returns (DeleteCommentResponse) {}
+    rpc GetCommentsByTweetID(GetCommentsByTweetIDRequest) returns (GetCommentsByTweetIDResponse) {}
+    rpc LikeComment(LikeCommentRequest) returns (LikeCommentResponse) {}
+    rpc RemoveLikeFromComment(RemoveLikeFromCommentRequest) returns (RemoveLikeFromCommentResponse) {}
+}
+
+message CreateCommentRequest {
+    int64 user_id = 1;
+    int64 tweet_id = 2;
+    string content = 3;
+}
+
+message CreateCommentResponse {
+    bool success = 1;
+    string message = 2;
+    Comment comment = 3;
+}
+
+message GetCommentRequest {
+    int64 id = 1;
+    int64 user_id = 2;
+}
+
+message GetCommentResponse {
+    bool success = 1;
+    string message = 2;
+    Comment comment = 3;
+}
+
+message DeleteCommentRequest {
+    int64 id = 1;
+    int64 user_id = 2;
+    int64 tweet_id = 3;
+}
+
+message DeleteCommentResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message GetCommentsByTweetIDRequest {
+    int64 tweet_id = 1;
+}
+
+message GetCommentsByTweetIDResponse {
+    bool success = 1;
+    string message = 2;
+    repeated Comment comments = 3;
+}
+
+message LikeCommentRequest {
+    int64 user_id = 1;
+    int64 comment_id = 2;
+}
+
+message LikeCommentResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message RemoveLikeFromCommentRequest {
+    int64 user_id = 1;
+    int64 comment_id = 2;
+}
+
+message RemoveLikeFromCommentResponse {
+    bool success = 1;
+    string message = 2;
+}

@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+option go_package = "/proto";
+
+message DirectMessage {
+    int64 id = 1;
+    int64 sender_id = 2;
+    int64 receiver_id = 3;
+    int64 tweet_id = 4;
+    string text = 5;
+    repeated string media = 6;
+    string created_at = 7; 
+}
+
+message FollowNotification {
+    int32 user_id = 1;
+    int32 follower_id = 2;
+    string action = 3; 
+    string message = 4;
+}
+
+message LikeNotification {
+    int32 user_id = 1;
+    int32 commenter_id = 2;
+    int32 tweet_owner_id = 3;
+    string action = 4; 
+    string message = 5;
+    int32 tweet_id = 6;
+}
+
+message CommentNotification {
+    int32 user_id = 1;
+    int32 tweet_id = 2;
+    int32 commenter_id = 3;
+    string action = 4; 
+    string message = 5;
+}
+
+service NotificationService {
+    rpc SendDirectMessage(DirectMessage) returns (EmptyResponse);
+    rpc SendFollowNotification(FollowNotification) returns (EmptyResponse);
+    rpc SendLikeNotification(LikeNotification) returns (EmptyResponse);
+    rpc SendCommentNotification(CommentNotification) returns (EmptyResponse);
+}
+
+message EmptyResponse {}

@@ -1,0 +1,233 @@
+services:
+  api_gateway:
+    build: ./api-gateway
+    container_name: api-gateway
+    ports:
+      - 5050:5050
+    depends_on:
+      - user_service
+      - tweet_service
+      - like_service
+      - comment_service
+      - notification_service
+      - direct_service
+      - broker
+    networks:
+      - mynetwork
+    env_file:
+      - .env
+
+  user_service:
+    build: ./user-service
+    container_name: user_service
+    environment:
+      - PG_URL=postgres://postgres:${POSTGRES_PASSWORD}@user_postgres:5432/users?sslmode=disable
+    ports:
+      - 5051:5051
+    depends_on:
+      - user_postgres
+      - redis
+      - broker
+    networks:
+      - mynetwork
+    env_file:
+      - .env
+
+  tweet_service:
+    build: ./tweet-service
+    container_name: tweet_service
+    ports:
+      - 5052:5052
+    depends_on:
+      - tweet_postgres
+      - redis
+      - broker
+    networks:
+      - mynetwork
+    env_file:
+      - .env
+
+  like_service:
+    build: ./like-service
+    container_name: like_service
+    ports:
+      - 5053:5053
+    depends_on:
+      - like_postgres
+      - redis
+      - broker
+    networks:
+      - mynetwork
+    env_file:
+      - .env
+
+  comment_service:
+    build: ./comment-service
+    container_name: comment_service
+    ports:
+      - 5054:5054
+    depends_on:
+      - comment_postgres
+      - redis
+      - broker
+    networks:
+      - mynetwork
+    env_file:
+      - .env
+
+  notification_service:
+    build: ./notification-service
+    container_name: notification_service
+    ports:
+      - "8083:8083"
+    depends_on:
+      - broker
+    networks:
+      - mynetwork
+    env_file:
+      - .env
+
+  direct_service:
+    build: ./direct-service
+    container_name: direct_service
+    ports:
+      - 5055:5055
+    depends_on:
+      - direct_postgres
+      - broker
+      - redis
+    networks:
+      - mynetwork
+    env_file:
+      - .env
+
+  broker:
+    image: apache/kafka:latest
+    container_name: kafka_broker
+    ports:
+      - "9092:29092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT,CONTROLLER:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://broker:29092,PLAINTEXT_HOST://localhost:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_PROCESS_ROLES: broker,controller
+      KAFKA_NODE_ID: 1
+      KAFKA_CONTROLLER_QUORUM_VOTERS: 1@broker:29093
+      KAFKA_LISTENERS: PLAINTEXT://broker:29092,CONTROLLER://broker:29093,PLAINTEXT_HOST://0.0.0.0:9092
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_LOG_DIRS: /tmp/kraft-combined-logs
+      CLUSTER_ID: MkU3OEVBNTcwNTJENDM2Qk
+    networks:
+      - mynetwork
+
+  user_postgres:
+    image: postgres:14-alpine
+    container_name: user_postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: users
+      PGDATA: /var/lib/postgresql/data
+    volumes:
+      - user-db-data:/var/lib/postgresql/data
+      - ./user_service/pkg/migrations:/docker-entrypoint-initdb.d
+    ports:
+      - "5435:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d users || exit 1"]
+      interval: 30s
+      retries: 3
+      start_period: 30s
+      timeout: 10s
+    networks:
+      - mynetwork
+
+  tweet_postgres:
+    image: postgres:14-alpine
+    container_name: tweet_postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: tweets
+    volumes:
+      - tweet-db-data:/var/lib/postgresql/data
+      - ./tweet_service/pkg/migrations:/docker-entrypoint-initdb.d
+    ports:
+      - "5436:5432"
+    networks:
+      - mynetwork
+
+  like_postgres:
+    image: postgres:14-alpine
+    container_name: like_postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: likes
+    volumes:
+      - like-db-data:/var/lib/postgresql/data
+      - ./like_service/pkg/migrations:/docker-entrypoint-initdb.d
+    ports:
+      - "5437:5432"
+    networks:
+      - mynetwork
+
+  comment_postgres:
+    image: postgres:14-alpine
+    container_name: comment_postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: comments
+    volumes:
+      - comment-db-data:/var/lib/postgresql/data
+      - ./comment_service/pkg/migrations:/docker-entrypoint-initdb.d
+    ports:
+      - "5438:5432"
+    networks:
+      - mynetwork
+
+  direct_postgres:
+    image: postgres:14-alpine
+    container_name: direct_postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: directs
+    volumes:
+      - direct-db-data:/var/lib/postgresql/data
+      - ./direct_service/pkg/migrations:/docker-entrypoint-initdb.d
+    ports:
+      - "5439:5432"
+    networks:
+      - mynetwork
+
+  redis:
+    image: redis:latest
+    container_name: redis_container
+    ports:
+      - "6378:6379"
+    healthcheck:
+      test: ["CMD-SHELL", "redis-cli ping | grep -q PONG || exit 1"]
+      interval: 30s
+      retries: 3
+      start_period: 30s
+      timeout: 10s
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge
+
+volumes:
+  user-db-data:
+  tweet-db-data:
+  like-db-data:
+  comment-db-data:
+  direct-db-data:    

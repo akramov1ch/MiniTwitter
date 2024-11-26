@@ -1,0 +1,118 @@
+syntax = "proto3";
+
+option go_package = "protos/like-proto";
+
+message Like {
+    int32 id = 1;
+    int32 user_id = 2;
+    string like_identifier = 3;
+    int32 liked_id = 4;
+    string created_at = 5;      
+}
+
+service LikeService {
+    rpc CreateLikeTweet(CreateLikeTweetRequest) returns (CreateLikeTweetResponse) {}
+    rpc DeleteLikeTweet(DeleteLikeTweetRequest) returns (DeleteLikeTweetResponse) {}
+    rpc GetLikesTweet(GetLikesTweetRequest) returns (GetLikesTweetResponse) {}
+    rpc GetLikeTweetByUser(GetLikeTweetByUserRequest) returns (GetLikeTweetByUserResponse) {}
+    rpc GetLikedTweet(GetLikedTweetRequest) returns (GetLikedTweetResponse) {}
+    rpc CreateLikeComment(CreateLikeCommentRequest) returns (CreateLikeCommentResponse) {}
+    rpc DeleteLikeComment(DeleteLikeCommentRequest) returns (DeleteLikeCommentResponse) {}
+    rpc GetLikesComment(GetLikesCommentRequest) returns (GetLikesCommentResponse) {}
+    rpc GetLikeCommentByUser(GetLikeCommentByUserRequest) returns (GetLikeCommentByUserResponse) {}
+}
+
+message GetLikedTweetRequest {
+    int32 user_id = 1;
+    int32 tweet_id = 2;
+    string like_identifier = 3;
+}
+
+message GetLikedTweetResponse {
+    bool success = 1;
+    string message = 2;
+    repeated Like likes = 3;
+}
+
+message CreateLikeTweetRequest {
+    int32 user_id = 1;
+    int32 tweet_id = 2;
+}
+
+message CreateLikeTweetResponse {
+    bool success = 1;
+    string message = 2;
+    Like like = 3;
+}
+
+message DeleteLikeTweetRequest {
+    int32 user_id = 1;
+    int32 tweet_id = 2;
+}
+
+message DeleteLikeTweetResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message GetLikesTweetRequest {
+    int32 tweet_id = 1;
+    int32 user_id_to_get = 2;
+}
+
+message GetLikesTweetResponse {
+    bool success = 1;
+    string message = 2;
+    repeated Like likes = 3;
+}
+
+message CreateLikeCommentRequest {
+    int32 user_id = 1;
+    int32 comment_id = 2;
+}
+
+message CreateLikeCommentResponse {
+    bool success = 1;
+    string message = 2;
+    Like like = 3;
+}
+
+message DeleteLikeCommentRequest {
+    int32 user_id = 1;
+    int32 comment_id = 2;
+}
+
+message DeleteLikeCommentResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message GetLikesCommentRequest {
+    int32 comment_id = 1;
+}
+
+message GetLikesCommentResponse {
+    bool success = 1;
+    string message = 2;
+    repeated Like likes = 3;
+}
+
+message GetLikeTweetByUserRequest {
+    int32 user_id = 1;
+}
+
+message GetLikeTweetByUserResponse {
+    bool success = 1;
+    string message = 2;
+    repeated Like likes = 3;
+}
+
+message GetLikeCommentByUserRequest {
+    int32 user_id = 1;
+}
+
+message GetLikeCommentByUserResponse {
+    bool success = 1;
+    string message = 2;
+    repeated Like likes = 3;
+}

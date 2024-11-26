@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS comments (
+    id BIGSERIAL PRIMARY KEY,
+    user_id BIGINT NOT NULL,
+    tweet_id BIGINT NOT NULL,
+    content TEXT NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
+    likes BIGINT[] NOT NULL
+);
