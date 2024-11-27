@@ -3,10 +3,6 @@ package main
 import (
 	"context"
 	"database/sql"
-	"user-service/config"
-	"user-service/internal/handlers"
-	"user-service/internal/service"
-	pb "user-service/pkg/proto"
 	"fmt"
 	"log"
 	"net"
@@ -14,6 +10,10 @@ import (
 	"os/signal"
 	"syscall"
 	"time"
+	"user-service/config"
+	"user-service/internal/handlers"
+	"user-service/internal/service"
+	pb "user-service/pkg/proto"
 
 	"user-service/internal/redis"
 
@@ -33,7 +33,12 @@ func main() {
 	if err != nil {
 		log.Fatalf("Ma'lumotlar bazasiga ulanishda xato: %v", err)
 	}
-	defer db.Close()
+	defer func(db *sql.DB) {
+		err := db.Close()
+		if err != nil {
+			log.Fatalf("Ma'lumotlar bazasini yopishda xato: %v", err)
+		}
+	}(db)
 
 	redisClient := redis.NewRedisClient()
 

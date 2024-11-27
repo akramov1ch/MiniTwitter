@@ -33,7 +33,12 @@ func main() {
 	if err != nil {
 		log.Fatalf("Ma'lumotlar bazasiga ulanishda xato: %v", err)
 	}
-	defer db.Close()
+	defer func(db *sql.DB) {
+		err := db.Close()
+		if err != nil {
+			log.Fatalf("Ma'lumotlar bazasini yopishda xato: %v", err)
+		}
+	}(db)
 
 	redisClient := redis.NewRedisClient()
 
