@@ -185,13 +185,18 @@ func Router() *http.Server {
 		Handler: router,
 	}
 
-	// Start the HTTPS server in a goroutine
-	go func() {
-		log.Printf("Starting HTTPS server on port %s", conf.SERVER_PORT)
-		if err := server.ListenAndServeTLS("./tls/items.pem", "./tls/items-key.pem"); err != nil && err != http.ErrServerClosed {
-			log.Fatalf("Failed to run HTTPS server: %v", err)
-		}
-	}()
+	// Start the HTTPS server in a goroutine _________________________________
+	//go func() {
+	//	log.Printf("Starting HTTPS server on port %s", conf.SERVER_PORT)
+	//	if err := server.ListenAndServeTLS("./tls/items.pem", "./tls/items-key.pem"); err != nil && err != http.ErrServerClosed {
+	//		log.Fatalf("Failed to run HTTPS server: %v", err)
+	//	}
+	//}()
+
+	log.Printf("Starting HTTP server on port %s", conf.SERVER_PORT)
+	if err := server.ListenAndServe(); err != nil && !errors.Is(err, http.ErrServerClosed) {
+		log.Fatalf("Failed to run HTTP server: %v", err)
+	}
 
 	// Setup graceful shutdown
 	quit := make(chan os.Signal, 1)
