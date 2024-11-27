@@ -32,18 +32,18 @@ import (
 )
 
 func Router() *http.Server {
-	userhandler := &userhandler.UserHandler{UserService: userclients.DialUserGrpc()}
-	tweetclient := tweetclients.DialTweetGrpc()
-	tweethandler := &tweethandler.TweetHandler{TweetService: tweetclient}
+	userHandlers := &userhandler.UserHandler{UserService: userclients.DialUserGrpc()}
+	tweetClient := tweetclients.DialTweetGrpc()
+	tweetHandlers := &tweethandler.TweetHandler{TweetService: tweetClient}
 
-	likeclient := likeclients.DialLikeGrpc()
-	likehandler := &likehandler.LikeHandler{LikeService: likeclient}
+	likeClient := likeclients.DialLikeGrpc()
+	likeHandler := &likehandler.LikeHandler{LikeService: likeClient}
 
-	commentclient := commentclients.DialCommentGrpc()
-	commenthandler := &commenthandler.CommentHandler{CommentService: commentclient}
+	commentClient := commentclients.DialCommentGrpc()
+	commentHandlers := &commenthandler.CommentHandler{CommentService: commentClient}
 
-	directclient := directclients.DialDirectGrpc()
-	directhandler := &directhandler.DirectHandler{DirectService: directclient}
+	directClient := directclients.DialDirectGrpc()
+	directHandlers := &directhandler.DirectHandler{DirectService: directClient}
 
 	// Rate limiter o‘rnatish
 	userRateLimiter := middleware.NewRateLimiter(2, time.Minute)
@@ -61,31 +61,31 @@ func Router() *http.Server {
 	userRoutes := router.Group("/users")
 	userRoutes.Use(userRateLimiter.Limit())
 	{
-		userRoutes.POST("/register", userhandler.Register)
+		userRoutes.POST("/register", userHandlers.Register)
 		log.Println("Registered route: POST /users/register")
-		userRoutes.POST("/login", userhandler.Login)
+		userRoutes.POST("/login", userHandlers.Login)
 		log.Println("Registered route: POST /users/login")
-		userRoutes.GET("/:id", jwt.Protected(), userhandler.GetUser)
+		userRoutes.GET("/:id", jwt.Protected(), userHandlers.GetUser)
 		log.Println("Registered route: GET /users/:id")
-		userRoutes.PUT("/:id", jwt.Protected(), userhandler.UpdateUser)
+		userRoutes.PUT("/:id", jwt.Protected(), userHandlers.UpdateUser)
 		log.Println("Registered route: PUT /users/:id")
-		userRoutes.DELETE("/:id", jwt.Protected(), userhandler.DeleteUser)
+		userRoutes.DELETE("/:id", jwt.Protected(), userHandlers.DeleteUser)
 		log.Println("Registered route: DELETE /users/:id")
-		userRoutes.PUT("/:id/password", jwt.Protected(), userhandler.ChangePassword)
+		userRoutes.PUT("/:id/password", jwt.Protected(), userHandlers.ChangePassword)
 		log.Println("Registered route: PUT /users/:id/password")
-		userRoutes.PUT("/:id/avatar", jwt.Protected(), userhandler.UpdateAvatar)
+		userRoutes.PUT("/:id/avatar", jwt.Protected(), userHandlers.UpdateAvatar)
 		log.Println("Registered route: PUT /users/:id/avatar")
-		userRoutes.POST("/:id/avatar", jwt.Protected(), userhandler.AddAvatar)
+		userRoutes.POST("/:id/avatar", jwt.Protected(), userHandlers.AddAvatar)
 		log.Println("Registered route: POST /users/:id/avatar")
-		userRoutes.DELETE("/:id/avatar", jwt.Protected(), userhandler.DeleteAvatar)
+		userRoutes.DELETE("/:id/avatar", jwt.Protected(), userHandlers.DeleteAvatar)
 		log.Println("Registered route: DELETE /users/:id/avatar")
-		userRoutes.PUT("/:id/follow", jwt.Protected(), userhandler.AddFollowing)
+		userRoutes.PUT("/:id/follow", jwt.Protected(), userHandlers.AddFollowing)
 		log.Println("Registered route: PUT /users/:id/follow")
-		userRoutes.PUT("/:id/unfollow", jwt.Protected(), userhandler.RemoveFollowing)
+		userRoutes.PUT("/:id/unfollow", jwt.Protected(), userHandlers.RemoveFollowing)
 		log.Println("Registered route: PUT /users/:id/unfollow")
-		userRoutes.PUT("/:id/follower", jwt.Protected(), userhandler.AddFollower)
+		userRoutes.PUT("/:id/follower", jwt.Protected(), userHandlers.AddFollower)
 		log.Println("Registered route: PUT /users/:id/follower")
-		userRoutes.PUT("/:id/unfollower", jwt.Protected(), userhandler.RemoveFollower)
+		userRoutes.PUT("/:id/unfollower", jwt.Protected(), userHandlers.RemoveFollower)
 		log.Println("Registered route: PUT /users/:id/unfollower")
 	}
 
@@ -93,29 +93,29 @@ func Router() *http.Server {
 	tweetRoutes := router.Group("/tweets")
 	tweetRoutes.Use(tweetRateLimiter.Limit())
 	{
-		tweetRoutes.POST("", jwt.Protected(), tweethandler.CreateTweet)
+		tweetRoutes.POST("", jwt.Protected(), tweetHandlers.CreateTweet)
 		log.Println("Registered route: POST /tweets")
-		tweetRoutes.GET("/user/:user_id", jwt.Protected(), tweethandler.GetTweetsByUser)
+		tweetRoutes.GET("/user/:user_id", jwt.Protected(), tweetHandlers.GetTweetsByUser)
 		log.Println("Registered route: GET /tweets/user/:user_id")
-		tweetRoutes.GET("/:id", jwt.Protected(), tweethandler.GetTweetByID)
+		tweetRoutes.GET("/:id", jwt.Protected(), tweetHandlers.GetTweetByID)
 		log.Println("Registered route: GET /tweets/:id")
-		tweetRoutes.PUT("/:id", jwt.Protected(), tweethandler.UpdateTweet)
+		tweetRoutes.PUT("/:id", jwt.Protected(), tweetHandlers.UpdateTweet)
 		log.Println("Registered route: PUT /tweets/:id")
-		tweetRoutes.DELETE("/:id", jwt.Protected(), tweethandler.DeleteTweet)
+		tweetRoutes.DELETE("/:id", jwt.Protected(), tweetHandlers.DeleteTweet)
 		log.Println("Registered route: DELETE /tweets/:id")
-		tweetRoutes.PUT("/:id/like", jwt.Protected(), tweethandler.AddLike)
+		tweetRoutes.PUT("/:id/like", jwt.Protected(), tweetHandlers.AddLike)
 		log.Println("Registered route: PUT /tweets/:id/like")
-		tweetRoutes.DELETE("/:id/like", jwt.Protected(), tweethandler.RemoveLike)
+		tweetRoutes.DELETE("/:id/like", jwt.Protected(), tweetHandlers.RemoveLike)
 		log.Println("Registered route: DELETE /tweets/:id/like")
-		tweetRoutes.POST("/:id/comment", jwt.Protected(), tweethandler.AddComment)
+		tweetRoutes.POST("/:id/comment", jwt.Protected(), tweetHandlers.AddComment)
 		log.Println("Registered route: POST /tweets/:id/comment")
-		tweetRoutes.DELETE("/:id/comment/:comment_id", jwt.Protected(), tweethandler.RemoveComment)
+		tweetRoutes.DELETE("/:id/comment/:comment_id", jwt.Protected(), tweetHandlers.RemoveComment)
 		log.Println("Registered route: DELETE /tweets/:id/comment/:comment_id")
-		tweetRoutes.PUT("/:id/share", jwt.Protected(), tweethandler.AddShare)
+		tweetRoutes.PUT("/:id/share", jwt.Protected(), tweetHandlers.AddShare)
 		log.Println("Registered route: PUT /tweets/:id/share")
-		tweetRoutes.PUT("/:id/save", jwt.Protected(), tweethandler.SaveTweet)
+		tweetRoutes.PUT("/:id/save", jwt.Protected(), tweetHandlers.SaveTweet)
 		log.Println("Registered route: PUT /tweets/:id/save")
-		tweetRoutes.DELETE("/:id/save", jwt.Protected(), tweethandler.RemoveSave)
+		tweetRoutes.DELETE("/:id/save", jwt.Protected(), tweetHandlers.RemoveSave)
 		log.Println("Registered route: DELETE /tweets/:id/save")
 	}
 
@@ -123,21 +123,21 @@ func Router() *http.Server {
 	likeRoutes := router.Group("/likes")
 	likeRoutes.Use(likeRateLimiter.Limit())
 	{
-		likeRoutes.POST("/tweet", jwt.Protected(), likehandler.CreateLikeTweet)
+		likeRoutes.POST("/tweet", jwt.Protected(), likeHandler.CreateLikeTweet)
 		log.Println("Registered route: POST /likes/tweet")
-		likeRoutes.DELETE("/tweet", jwt.Protected(), likehandler.DeleteLikeTweet)
+		likeRoutes.DELETE("/tweet", jwt.Protected(), likeHandler.DeleteLikeTweet)
 		log.Println("Registered route: DELETE /likes/tweet")
-		likeRoutes.GET("/tweet/:tweet_id", jwt.Protected(), likehandler.GetLikesTweet)
+		likeRoutes.GET("/tweet/:tweet_id", jwt.Protected(), likeHandler.GetLikesTweet)
 		log.Println("Registered route: GET /likes/tweet/:tweet_id")
-		likeRoutes.GET("/tweet/user/:user_id", jwt.Protected(), likehandler.GetLikeTweetByUser)
+		likeRoutes.GET("/tweet/user/:user_id", jwt.Protected(), likeHandler.GetLikeTweetByUser)
 		log.Println("Registered route: GET /likes/tweet/user/:user_id")
-		likeRoutes.POST("/comment", jwt.Protected(), likehandler.CreateLikeComment)
+		likeRoutes.POST("/comment", jwt.Protected(), likeHandler.CreateLikeComment)
 		log.Println("Registered route: POST /likes/comment")
-		likeRoutes.DELETE("/comment", jwt.Protected(), likehandler.DeleteLikeComment)
+		likeRoutes.DELETE("/comment", jwt.Protected(), likeHandler.DeleteLikeComment)
 		log.Println("Registered route: DELETE /likes/comment")
-		likeRoutes.GET("/comment/:comment_id", jwt.Protected(), likehandler.GetLikesComment)
+		likeRoutes.GET("/comment/:comment_id", jwt.Protected(), likeHandler.GetLikesComment)
 		log.Println("Registered route: GET /likes/comment/:comment_id")
-		likeRoutes.GET("/comment/user/:user_id", jwt.Protected(), likehandler.GetLikeCommentByUser)
+		likeRoutes.GET("/comment/user/:user_id", jwt.Protected(), likeHandler.GetLikeCommentByUser)
 		log.Println("Registered route: GET /likes/comment/user/:user_id")
 	}
 
@@ -145,13 +145,13 @@ func Router() *http.Server {
 	commentRoutes := router.Group("/comments")
 	commentRoutes.Use(commentRateLimiter.Limit())
 	{
-		commentRoutes.POST("", jwt.Protected(), commenthandler.CreateComment)
+		commentRoutes.POST("", jwt.Protected(), commentHandlers.CreateComment)
 		log.Println("Registered route: POST /comments")
-		commentRoutes.GET("/tweet/:tweet_id", jwt.Protected(), commenthandler.GetCommentsByTweetID)
+		commentRoutes.GET("/tweet/:tweet_id", jwt.Protected(), commentHandlers.GetCommentsByTweetID)
 		log.Println("Registered route: GET /comments/tweet/:tweet_id")
-		commentRoutes.GET("/:id", jwt.Protected(), commenthandler.GetComment)
+		commentRoutes.GET("/:id", jwt.Protected(), commentHandlers.GetComment)
 		log.Println("Registered route: GET /comments/:id")
-		commentRoutes.DELETE("/:id", jwt.Protected(), commenthandler.DeleteComment)
+		commentRoutes.DELETE("/:id", jwt.Protected(), commentHandlers.DeleteComment)
 		log.Println("Registered route: DELETE /comments/:id")
 	}
 
@@ -159,13 +159,13 @@ func Router() *http.Server {
 	directRoutes := router.Group("/directs")
 	directRoutes.Use(directRateLimiter.Limit())
 	{
-		directRoutes.POST("", jwt.Protected(), directhandler.CreateDirectMessage)
+		directRoutes.POST("", jwt.Protected(), directHandlers.CreateDirectMessage)
 		log.Println("Registered route: POST /directs")
-		directRoutes.GET("", jwt.Protected(), directhandler.GetDirectMessages)
+		directRoutes.GET("", jwt.Protected(), directHandlers.GetDirectMessages)
 		log.Println("Registered route: GET /directs")
-		directRoutes.GET("/:id", jwt.Protected(), directhandler.GetDirectMessageByID)
+		directRoutes.GET("/:id", jwt.Protected(), directHandlers.GetDirectMessageByID)
 		log.Println("Registered route: GET /directs/:id")
-		directRoutes.DELETE("/:id", jwt.Protected(), directhandler.DeleteDirectMessage)
+		directRoutes.DELETE("/:id", jwt.Protected(), directHandlers.DeleteDirectMessage)
 		log.Println("Registered route: DELETE /directs/:id")
 	}
 
