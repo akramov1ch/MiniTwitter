@@ -1,12 +1,12 @@
 package main
 
 import (
-	"context"
-	"database/sql"
 	"comment-service/config"
 	"comment-service/internal/handlers"
 	"comment-service/internal/service"
 	pb "comment-service/pkg/proto"
+	"context"
+	"database/sql"
 	"fmt"
 	"log"
 	"net"
