@@ -2,6 +2,7 @@ package router
 
 import (
 	"context"
+	"errors"
 	"log"
 	"net/http"
 	"os"
@@ -180,7 +181,7 @@ func Router() *http.Server {
 	// ... (existing route setup code)
 
 	server := &http.Server{
-		Addr:     "localhost:" + conf.SERVER_PORT, // Remove "localhost" to bind to all interfaces
+		Addr:    "localhost:" + conf.SERVER_PORT, // Remove "localhost" to bind to all interfaces
 		Handler: router,
 	}
 
@@ -225,11 +226,11 @@ func GracefulShutdown(srv *http.Server, logger *log.Logger) {
 	}
 
 	select {
-		case <-shutdownCtx.Done():
-			if shutdownCtx.Err() == context.DeadlineExceeded {
-				logger.Println("Shutdown deadline exceeded, forcing server to stop")
-			}
-		default:
-			logger.Println("Shutdown completed within the timeout period")
+	case <-shutdownCtx.Done():
+		if errors.Is(shutdownCtx.Err(), context.DeadlineExceeded) {
+			logger.Println("Shutdown deadline exceeded, forcing server to stop")
+		}
+	default:
+		logger.Println("Shutdown completed within the timeout period")
 	}
 }
