@@ -1,8 +1,8 @@
 package main
 
 import (
-	"api-gateway/internal/router"
 	_ "api-gateway/cmd/docs" // This line is important for swagger
+	"api-gateway/internal/router"
 )
 
 // @title API Gateway
